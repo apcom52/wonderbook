@@ -1,0 +1,49 @@
+@import 'uvars';
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+@gradient-size: 90px;
+
+.auth-page {
+  width: 100%;
+  height: 100%;
+  background-image: url(/media/img/auth_bg.jpg);
+  background-position: center left;
+  background-color: #151d2a;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  display: flex;
+  align-items: center;
+
+  .auth-card {
+    flex: 0;
+    width: 30%;
+    min-width: 600px;
+    max-width: 800px;
+    margin-left: 50%;
+    background-color: @white;
+    border-radius: @rounded;
+    overflow: hidden;
+
+    .auth-card__top {
+      width: 100%;
+      height: 20px;
+      background: repeating-linear-gradient(45deg, @l-red, @l-red @gradient-size, @l-yellow 0, @l-yellow @gradient-size * 2, @l-olive 0, @l-olive @gradient-size * 3, @l-blue 0, @l-blue @gradient-size * 4, @l-purple 0, @l-purple @gradient-size * 5);
+    }
+
+    .auth-card__logo {
+      margin-top: 3rem;
+    }
+
+    .auth-card__subheader {
+      color: @black;
+      font-family: @bold-font;
+    }
+  }
+}

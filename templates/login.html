@@ -1,5 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Hello, world!</h1>
+<div class="auth-page">
+    <div class="auth-card shadow-3">
+        <div class="auth-card__top"></div>
+        <div class="align-center">
+            <img src="/media/img/logo.png" alt="" class="auth-card__logo">
+            <div class="auth-card__subheader">Читай с удовольствием!</div>
+        </div>
+        <div class="tabs margin-top-2 tabs--transparent tabs--color-olive tabs--centered">
+            <div class="tabs__item tabs__item--active">Авторизация</div>
+            <div class="tabs__item">Регистрация</div>
+        </div>
+        <div class="form margin-horizontal-2 margin-top-1 margin-bottom-2 form--fit form--color-olive">
+            <label for="username">Имя пользователя:</label>
+            <input type="text" id="username" placeholder="Введите имя пользователя или электронную почту">
+
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" placeholder="Введите ваш пароль">
+
+            <div class="align-center margin-top-1">
+                <button class="button--rounded button--size-large button--color-olive">Вход</button>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

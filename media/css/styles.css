@@ -1,0 +1,43 @@
+/* Accent colors */
+/* Devices */
+/* Smoothing */
+/* Font */
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+}
+.auth-page {
+  width: 100%;
+  height: 100%;
+  background-image: url(/media/img/auth_bg.jpg);
+  background-position: center left;
+  background-color: #151d2a;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  display: flex;
+  align-items: center;
+}
+.auth-page .auth-card {
+  flex: 0;
+  width: 30%;
+  min-width: 600px;
+  max-width: 800px;
+  margin-left: 50%;
+  background-color: #ffffff;
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+.auth-page .auth-card .auth-card__top {
+  width: 100%;
+  height: 20px;
+  background: repeating-linear-gradient(45deg, #ef9a9a, #ef9a9a 90px, #fff176 0, #fff176 180px, #c5e1a5 0, #c5e1a5 270px, #90caf9 0, #90caf9 360px, #ce93d8 0, #ce93d8 450px);
+}
+.auth-page .auth-card .auth-card__logo {
+  margin-top: 3rem;
+}
+.auth-page .auth-card .auth-card__subheader {
+  color: #212121;
+  font-family: 'PT Sans Bold', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI Black", "Roboto Black", "Helvetica Neue Black", "Arial Black", sans-serif;
+}

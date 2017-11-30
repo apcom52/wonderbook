@@ -120,12 +120,8 @@ USE_TZ = True
 
 
 _PATH = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-STATIC_URL = 'media/static/'
-STATIC_ROOT = os.path.join(_PATH, 'media', 'static', 'static_root')
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "media", "static"),
-)
+STATIC_URL = '/media/static/'
+STATIC_ROOT = os.path.join(_PATH, 'media', 'static')
 
 MEDIA_ROOT = os.path.join(_PATH, 'media')
 MEDIA_URL = '/media/'

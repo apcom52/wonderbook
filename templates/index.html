@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="topbar">
+    <img src="/media/img/logo.png" alt="" class="topbar__logo" tabindex="0">
+    <input type="text" placeholder="Поиск..." class="topbar__search" tabindex="0">
+    <div class="topbar__item" tabindex="0"><i class="lnr lnr-moon"></i></div>
+    <div class="topbar__item" tabindex="0"><i class="lnr lnr-upload"></i></div>
+    <div class="topbar__item" tabindex="0"><i class="lnr lnr-mustache"></i> {{request.user.username}} <i class="lnr lnr-chevron-down margin-left-05"></i></div>
+</div>
+
+<div class="grid appscreen">
+    <div class="col-9 collections">
+        <div class="app-tabs">
+            <div class="app-tabs__tab app-tabs__tab--active" tabindex="0">Мои коллекции</div>
+            <div class="app-tabs__tab" tabindex="0">Все книги</div>
+        </div>
+        <div class="collection-list">
+            <div class="collection-item collection-item--favorite" tabindex="0">
+                <div class="collection-item__title"><i class="lnr lnr-star margin-right-05"></i>Избранные книги</div>
+                <div class="collection-item__count">9</div>
+            </div>
+            <div class="collection-item collection-item--downloads" tabindex="0">
+                <div class="collection-item__title"><i class="lnr lnr-book margin-right-05"></i>Загруженные книги</div>
+                <div class="collection-item__count">14</div>
+            </div>
+            <div class="collection-item collection-item--latest" tabindex="0">
+                <div class="collection-item__title"><i class="lnr lnr-history margin-right-05"></i>Недавно прочитанные</div>
+                <div class="collection-item__count">2</div>
+            </div>
+            <div class="collection-item" tabindex="0">
+                <div class="collection-item__title">Чтение на ночь</div>
+                <div class="collection-item__count">3</div>
+            </div>
+            <div class="collection-item" tabindex="0">
+                <div class="collection-item__title">Ужастики</div>
+                <div class="collection-item__count">5</div>
+            </div>
+            <div class="collection-item collection-item--add" tabindex="0">
+                <div class="collection-item__title"><i class="lnr lnr-plus-circle"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-3 tasks">
+        <h1>Задачи</h1>
+    </div>
+</div>
+{% endblock %}

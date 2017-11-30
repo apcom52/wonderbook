@@ -7,6 +7,7 @@ html {
 }
 body {
   height: 100%;
+  background-color: #f5f5f5;
 }
 .auth-page {
   width: 100%;
@@ -40,4 +41,174 @@ body {
 .auth-page .auth-card .auth-card__subheader {
   color: #212121;
   font-family: 'PT Sans Bold', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI Black", "Roboto Black", "Helvetica Neue Black", "Arial Black", sans-serif;
+}
+.topbar {
+  display: flex;
+  background-color: #ffffff;
+  border-bottom: 1px solid #f5f5f5;
+  height: 80px;
+  align-items: center;
+  font-size: 1.2em;
+  font-family: 'PT Sans', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.topbar .topbar__logo {
+  width: 200px;
+  height: auto;
+  margin: 1rem 2rem;
+  cursor: pointer;
+}
+.topbar .topbar__search {
+  flex: 1;
+  background-color: #f5f5f5;
+  border-radius: 0.5rem;
+  padding: 0.5rem 2rem;
+  margin: 0 1rem;
+  border: none;
+  outline: none;
+  font-family: 'PT Sans', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.topbar .topbar__item {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin: 0 0.5rem;
+  outline: none;
+  font-family: 'PT Sans Bold', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI Black", "Roboto Black", "Helvetica Neue Black", "Arial Black", sans-serif;
+  font-weight: bold;
+}
+.topbar .topbar__item:hover,
+.topbar .topbar__item:focus {
+  color: #8bc34a;
+  background-color: #f5f5f5;
+  border-radius: 0.5rem;
+}
+.appscreen {
+  align-items: stretch;
+  height: calc(100% - 80px);
+}
+.app-tabs {
+  display: flex;
+  margin: 1rem;
+}
+.app-tabs .app-tabs__tab {
+  margin: 0 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  outline: none;
+  font-family: 'PT Sans Bold', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI Black", "Roboto Black", "Helvetica Neue Black", "Arial Black", sans-serif;
+  font-weight: bold;
+}
+.app-tabs .app-tabs__tab:first-child {
+  margin-left: 0;
+}
+.app-tabs .app-tabs__tab:hover,
+.app-tabs .app-tabs__tab:focus {
+  color: #8bc34a;
+}
+.app-tabs .app-tabs__tab:active,
+.app-tabs .app-tabs__tab.app-tabs__tab--active {
+  color: #8bc34a;
+  border-bottom: 2px solid #8bc34a;
+}
+.collections {
+  padding-left: 50px;
+}
+.collections .collection-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.collections .collection-list .collection-item {
+  background: linear-gradient(to top, #b39ddb, #80cbc4);
+  display: flex;
+  color: #ffffff;
+  width: calc(33% - 2rem);
+  min-height: 200px;
+  box-sizing: border-box;
+  margin: 1rem;
+  cursor: pointer;
+  padding: 2rem;
+  align-items: flex-end;
+  border-radius: 1rem;
+  outline: none;
+  border-bottom: 2px solid #a58ad4;
+  position: relative;
+}
+.collections .collection-list .collection-item:hover,
+.collections .collection-list .collection-item:active,
+.collections .collection-list .collection-item:focus {
+  background: linear-gradient(to top, #a58ad4, #80cbc4);
+}
+.collections .collection-list .collection-item:hover .collection-item__title,
+.collections .collection-list .collection-item:active .collection-item__title,
+.collections .collection-list .collection-item:focus .collection-item__title {
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(33, 33, 33, 0.9);
+  transition: margin-bottom 0.3s ease-out, text-shadow 0.3s linear;
+}
+.collections .collection-list .collection-item.collection-item--favorite {
+  background: linear-gradient(to top, #ef9a9a, #ffcc80);
+  border-bottom-color: #ec8484;
+}
+.collections .collection-list .collection-item.collection-item--favorite:hover,
+.collections .collection-list .collection-item.collection-item--favorite:active,
+.collections .collection-list .collection-item.collection-item--favorite:focus {
+  background: linear-gradient(to top, #ec8484, #ffcc80);
+}
+.collections .collection-list .collection-item.collection-item--downloads {
+  background: linear-gradient(to top, #b39ddb, #c5e1a5);
+  border-bottom-color: #a58ad4;
+}
+.collections .collection-list .collection-item.collection-item--downloads:hover,
+.collections .collection-list .collection-item.collection-item--downloads:active,
+.collections .collection-list .collection-item.collection-item--downloads:focus {
+  background: linear-gradient(to top, #a58ad4, #c5e1a5);
+}
+.collections .collection-list .collection-item.collection-item--latest {
+  background: linear-gradient(to top, #a5d6a7, #fff176);
+  border-bottom-color: #93ce96;
+}
+.collections .collection-list .collection-item.collection-item--latest:hover,
+.collections .collection-list .collection-item.collection-item--latest:active,
+.collections .collection-list .collection-item.collection-item--latest:focus {
+  background: linear-gradient(to top, #93ce96, #fff176);
+}
+.collections .collection-list .collection-item .collection-item__title {
+  font-size: 2rem;
+  text-shadow: 0 1px 1px rgba(33, 33, 33, 0.9);
+  transition: margin-bottom 0.3s ease-out, text-shadow 0.3s linear;
+}
+.collections .collection-list .collection-item .collection-item__title .collection-item__meta {
+  font-size: 1rem;
+}
+.collections .collection-list .collection-item .collection-item__count {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 6rem;
+  font-family: 'PT Sans Bold', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI Black", "Roboto Black", "Helvetica Neue Black", "Arial Black", sans-serif;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.75);
+}
+.collections .collection-list .collection-item.collection-item--add {
+  background: #E0E0E0;
+  align-items: center;
+  justify-content: center;
+  border-bottom: none;
+}
+.collections .collection-list .collection-item.collection-item--add .collection-item__title {
+  font-size: 3rem;
+  color: #212121;
+  text-shadow: none;
+}
+.collections .collection-list .collection-item.collection-item--add:hover,
+.collections .collection-list .collection-item.collection-item--add:active,
+.collections .collection-list .collection-item.collection-item--add:focus {
+  background: #d3d3d3;
+}
+.collections .collection-list .collection-item.collection-item--add:hover .collection-item__title,
+.collections .collection-list .collection-item.collection-item--add:active .collection-item__title,
+.collections .collection-list .collection-item.collection-item--add:focus .collection-item__title {
+  margin-bottom: 0rem;
+}
+.tasks {
+  background-color: #ffffff;
 }

@@ -8,21 +8,59 @@
             <img src="/media/img/logo.png" alt="" class="auth-card__logo">
             <div class="auth-card__subheader">Читай с удовольствием!</div>
         </div>
-        <div class="tabs margin-top-2 tabs--transparent tabs--color-olive tabs--centered">
-            <div class="tabs__item tabs__item--active">Авторизация</div>
-            <div class="tabs__item">Регистрация</div>
+        <div class="tabs margin-top-2 tabs--transparent tabs--color-olive tabs--centered" id="sign">
+            <div class="tabs__item tabs__item--active" data-tab-target="signIn">Авторизация</div>
+            <div class="tabs__item" data-tab-target="signUp">Регистрация</div>
         </div>
-        <div class="form margin-horizontal-2 margin-top-1 margin-bottom-2 form--fit form--color-olive">
-            <label for="username">Имя пользователя:</label>
-            <input type="text" id="username" placeholder="Введите имя пользователя или электронную почту">
+        {% for error in errors %}
+        <div class="alert alert--color-red">{{ error }}</div>
+        {% endfor %}
+        <form action="/auth" method="POST" class="form margin-horizontal-2 margin-top-1 margin-bottom-2 form--fit form--color-olive" id="signIn">
+            <input type="hidden" name="method" value="in">
+            {% csrf_token %}
+            <label for="in_username">Имя пользователя:</label>
+            <input type="text" name="username" id="in_username" placeholder="Введите имя пользователя или электронную почту">
 
-            <label for="password">Пароль:</label>
-            <input type="password" id="password" placeholder="Введите ваш пароль">
+            <label for="in_password">Пароль:</label>
+            <input type="password" name="password" id="in_password" placeholder="Введите ваш пароль">
 
             <div class="align-center margin-top-1">
-                <button class="button--rounded button--size-large button--color-olive">Вход</button>
+                <input type="submit" class="button--rounded button--size-large button--color-olive" value="Вход">
             </div>
-        </div>
+        </form>
+
+        <form action="/auth" method="POST" class="form margin-horizontal-2 margin-top-1 margin-bottom-2 form--fit form--color-olive" id="signUp">
+            <input type="hidden" name="method" value="up">
+            {% csrf_token %}
+            <label for="up_username">Ваше имя:</label>
+            <input type="text" name="username" id="up_username" placeholder="Введите ваше имя аккаунта">
+
+            <label for="up_email">Адрес электронной почты:</label>
+            <input type="text" name="email" id="up_email" placeholder="Введите ваш адрес электронной почты">
+
+            <label for="up_password">Пароль:</label>
+            <input type="password" name="password" id="up_password" placeholder="Введите ваш пароль">
+
+            <label for="up_repassword">Повторите пароль:</label>
+            <input type="password" name="repassword" id="up_repassword" placeholder="Повторите пароль">
+
+            <div class="align-center margin-top-1">
+                <input type="submit" class="button--rounded button--size-large button--color-olive" value="Регистрация">
+            </div>
+        </form>
     </div>
 </div>
+
+<script>
+    function get(name){
+        if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+            return decodeURIComponent(name[1]);
+    }
+
+    let authTabs = new Tabs(document.getElementById('sign'));
+
+    if (get('auth-tab')) {
+        authTabs.open(parseInt(get('auth-tab')));
+    }
+</script>
 {% endblock %}

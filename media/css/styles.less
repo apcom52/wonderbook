@@ -6,9 +6,19 @@ html {
 
 body {
   height: 100%;
+  background-color: @u-gray;
 }
 
 @gradient-size: 90px;
+
+.pt() {
+  font-family: @normal-font;
+}
+
+.bold() {
+  font-family: @bold-font;
+  font-weight: bold;
+}
 
 .auth-page {
   width: 100%;
@@ -46,4 +56,182 @@ body {
       font-family: @bold-font;
     }
   }
+}
+
+.topbar {
+  display: flex;
+  background-color: @white;
+  border-bottom: 1px solid @u-gray;
+  height: 80px;
+  align-items: center;
+  font-size: 1.2em;
+  .pt();
+
+  .topbar__logo {
+    width: 200px;
+    height: auto;
+    margin: 1rem 2rem;
+    cursor: pointer;
+  }
+
+  .topbar__search {
+    flex: 1;
+    background-color: @u-gray;
+    border-radius: 0.5rem;
+    padding: 0.5rem 2rem;
+    margin: 0 1rem;
+    border: none;
+    outline: none;
+    .pt();
+  }
+
+  .topbar__item {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    margin: 0 0.5rem;
+    outline: none;
+    .bold();
+
+    &:hover, &:focus {
+      color: @olive;
+      background-color: @u-gray;
+      border-radius: 0.5rem;
+    }
+  }
+}
+
+.appscreen {
+  align-items: stretch;
+  height: ~'calc(100% - 80px)';
+}
+
+.app-tabs {
+  display: flex;
+  margin: 1rem;
+
+  .app-tabs__tab {
+    margin: 0 1rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    outline: none;
+    .bold();
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:hover, &:focus {
+      color: @olive;
+    }
+
+    &:active, &.app-tabs__tab--active {
+      color: @olive;
+      border-bottom: 2px solid @olive;
+    }
+  }
+}
+
+.collections {
+  padding-left: 50px;
+
+  .collection-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    .collection-item {
+      background: linear-gradient(to top, @l-violet, @l-teal);
+      display: flex;
+      color: @white;
+      width: ~'calc(33% - 2rem)';
+      min-height: 200px;
+      box-sizing: border-box;
+      margin: 1rem;
+      cursor: pointer;
+      padding: 2rem;
+      align-items: flex-end;
+      border-radius: 1rem;
+      outline: none;
+      border-bottom: 2px solid darken(@l-violet, 5%);
+      position: relative;
+
+      &:hover, &:active, &:focus {
+        background: linear-gradient(to top, darken(@l-violet, 5%), @l-teal);
+        .collection-item__title {
+          margin-bottom: 0.5rem;
+          text-shadow: 0 2px 4px fade(@black, 90%);;
+          transition: margin-bottom 0.3s ease-out, text-shadow 0.3s linear;
+        }
+      }
+
+      &.collection-item--favorite {
+        background: linear-gradient(to top, @l-red, @l-orange);
+        border-bottom-color: darken(@l-red, 5%);
+
+        &:hover, &:active, &:focus {
+          background: linear-gradient(to top, darken(@l-red, 5%), @l-orange);
+        }
+      }
+
+      &.collection-item--downloads {
+        background: linear-gradient(to top, @l-violet, @l-olive);
+        border-bottom-color: darken(@l-violet, 5%);
+
+        &:hover, &:active, &:focus {
+          background: linear-gradient(to top, darken(@l-violet, 5%), @l-olive);
+        }
+      }
+
+      &.collection-item--latest {
+        background: linear-gradient(to top, @l-green, @l-yellow);
+        border-bottom-color: darken(@l-green, 5%);
+
+        &:hover, &:active, &:focus {
+          background: linear-gradient(to top, darken(@l-green, 5%), @l-yellow);
+        }
+      }
+
+      .collection-item__title {
+        font-size: 2rem;
+        text-shadow: 0 1px 1px fade(@black, 90%);
+        transition: margin-bottom 0.3s ease-out, text-shadow 0.3s linear;
+
+        .collection-item__meta {
+          font-size: 1rem;
+        }
+      }
+
+      .collection-item__count {
+        position: absolute;
+        top: 0.5rem;
+        right: 1rem;
+        font-size: 6rem;
+        .bold();
+        color: fade(@white, 75%);
+      }
+
+      &.collection-item--add {
+        background: @l-gray;
+        align-items: center;
+        justify-content: center;
+        border-bottom: none;
+
+        .collection-item__title {
+          font-size: 3rem;
+          color: @black;
+          text-shadow: none;
+        }
+
+        &:hover, &:active, &:focus {
+          background: darken(@l-gray, 5%);
+          .collection-item__title {
+            margin-bottom: 0rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.tasks {
+  background-color: @white;
 }

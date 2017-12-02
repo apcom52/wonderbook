@@ -133,6 +133,7 @@ body {
 
 .collections {
   padding-left: 50px;
+  overflow-y: auto;
 
   .collection-list {
     display: flex;
@@ -234,4 +235,143 @@ body {
 
 .tasks {
   background-color: @white;
+}
+
+.book-window {
+  display: none;
+  background-color: @white;
+  width: 980px;
+  left: ~'calc(50% - 490px)';
+  height: 600px;
+  z-index: 10;
+  top: ~'calc(50vh - 300px)';
+  position: fixed;
+  box-shadow: 0px 3px 12px 3px fade(@black, 20%);
+  opacity: 0;
+  margin-top: 100px;
+
+  &.book-window--show {
+    display: flex;
+    animation: book-window;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+  }
+
+  &.book-window--hide {
+    animation: book-window;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    animation-direction: reverse;
+  }
+
+  .book-window__left-side {
+    width: 380px;
+
+    .book-window__cover {
+      width: 300px;
+      margin-top: -20px;
+      margin-left: 40px;
+      height: 450px;
+      position: absolute;
+      overflow: hidden;
+      box-shadow: 1px 2px 6px 0px fade(@black, 50%);
+    }
+
+    .book-window__buttons {
+      margin-top: 430px;
+    }
+  }
+
+  .book-window__right-side {
+    flex: 1;
+    margin: 1rem 1rem 1rem 0rem;
+
+    .book-info {
+      margin: 1rem;
+      font-size: 1.2rem;
+
+      .book-info__title {
+        text-transform: uppercase;
+        color: @m-gray;
+        .bold();
+      }
+
+      .book-info__content {
+        margin-top: 0.5rem;
+        font-size: 1.1rem;
+        color: @d-gray;
+        text-align: justify;
+
+        .tags {
+          .tags__item {
+            &:first-child {
+              margin-left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.books-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  .book {
+    flex: 0;
+    min-width: 250px;
+    padding: 1rem;
+    box-sizing: border-box;
+    content: "";
+    cursor: pointer;
+    position: relative;
+
+    img {
+      width: 218px;
+      height: 327px;
+      box-shadow: 0 2px 3px 1px fade(@black, 50%);
+    }
+
+    .book__overlay {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      width: 218px;
+      height: 327px;
+      background-color: fade(@black, 80%);
+      content: "";
+      visibility: hidden;
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: column;
+      padding-bottom: 1rem;
+    }
+
+    .book__title {
+      margin-top: 1rem;
+      .bold();
+      color: @black;
+    }
+
+    &:hover {
+      .book__overlay {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+@keyframes book-window {
+  0% {
+    opacity: 0;
+    margin-top: 100px;
+  }
+
+  100% {
+    opacity: 1;
+    margin-top: 0px;
+  }
 }

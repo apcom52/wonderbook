@@ -58,5 +58,7 @@ def profile_auth(request):
 	return render(request, 'login.html', context)
 
 def index(request):
+	if not request.user:
+		return redirect('/auth/')
 	context = {}
 	return render(request, 'index.html', context)

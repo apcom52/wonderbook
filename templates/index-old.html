@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="topbar">
+    <img src="/media/img/logo.png" alt="" class="topbar__logo" tabindex="0">
+    <input type="text" placeholder="Поиск..." class="topbar__search" tabindex="0">
+    <div class="topbar__item" tabindex="0"><i class="lnr lnr-moon"></i></div>
+    <div class="topbar__item" tabindex="0" onclick="showBookWindow();"><i class="lnr lnr-upload"></i></div>
+    <div class="topbar__item" tabindex="0"><i class="lnr lnr-mustache"></i> {{request.user.username}} <i class="lnr lnr-chevron-down margin-left-05"></i></div>
+</div>
+
+<div class="grid appscreen">
+    <div class="col-9 collections">
+        <div class="app-tabs">
+            <div class="app-tabs__tab app-tabs__tab--active" tabindex="0">Мои коллекции</div>
+            <div class="app-tabs__tab" tabindex="0">Все книги</div>
+        </div>
+        <div class="collection-list">
+            <div class="collection-item collection-item--favorite" tabindex="0">
+                <div class="collection-item__title"><i class="lnr lnr-star margin-right-05"></i>Избранные книги</div>
+                <div class="collection-item__count">9</div>
+            </div>
+            <div class="collection-item collection-item--downloads" tabindex="0">
+                <div class="collection-item__title"><i class="lnr lnr-book margin-right-05"></i>Загруженные книги</div>
+                <div class="collection-item__count">14</div>
+            </div>
+            <div class="collection-item collection-item--latest" tabindex="0">
+                <div class="collection-item__title"><i class="lnr lnr-history margin-right-05"></i>Недавно прочитанные</div>
+                <div class="collection-item__count">2</div>
+            </div>
+            <div class="collection-item" tabindex="0">
+                <div class="collection-item__title">Чтение на ночь</div>
+                <div class="collection-item__count">3</div>
+            </div>
+            <div class="collection-item" tabindex="0">
+                <div class="collection-item__title">Ужастики</div>
+                <div class="collection-item__count">5</div>
+            </div>
+            <div class="collection-item collection-item--add" tabindex="0">
+                <div class="collection-item__title"><i class="lnr lnr-plus-circle"></i></div>
+            </div>
+        </div>
+
+        <div class="books-list">
+            <div class="book">
+                <img src="https://vignette4.wikia.nocookie.net/harrypotter/images/6/62/Kabuishi_Harry_Potter_and_the_Sorcerer%27s_Stone_Cover.jpg/revision/latest?cb=20130213235228" alt="">
+                <div class="book__title">Harry Potter and the Sorcerer's Stone</div>
+                <div class="book__overlay">
+                    <button class="button--color-red button--only-borders button--rounded">Удалить</button>
+                    <button class="button--color-olive button--only-borders button--rounded">Открыть</button>
+                </div>
+            </div>
+            <div class="book">
+                <img src="http://vignette4.wikia.nocookie.net/harrypotter/images/c/c1/Harry-potter-new-chamber-of-secrets-cover-630.jpg/revision/latest?cb=20130531032754" alt="">
+                <div class="book__title">Harry Potter and the Chamber of Secrets</div>
+                <div class="book__overlay">
+                    <button class="button--color-red button--only-borders button--rounded">Удалить</button>
+                    <button class="button--color-olive button--only-borders button--rounded">Открыть</button>
+                </div>
+            </div>
+            <div class="book">
+                <img src="https://ewedit.files.wordpress.com/2016/09/kkhp3.jpg?w=402" alt="">
+                <div class="book__title">Harry Potter and the Prisoner of Azkaban</div>
+                <div class="book__overlay">
+                    <button class="button--color-red button--only-borders button--rounded">Удалить</button>
+                    <button class="button--color-olive button--only-borders button--rounded">Открыть</button>
+                </div>
+            </div>
+            <div class="book">
+                <img src="https://s-media-cache-ak0.pinimg.com/originals/5b/77/7b/5b777b414bb178f297f11a2b5e0177f6.jpg" alt="">
+                <div class="book__title">Harry Potter and the Goblet of Fire</div>
+                <div class="book__overlay">
+                    <button class="button--color-red button--only-borders button--rounded">Удалить</button>
+                    <button class="button--color-olive button--only-borders button--rounded">Открыть</button>
+                </div>
+            </div>
+            <div class="book">
+                <img src="https://pottermoreowl.files.wordpress.com/2013/06/order-of-the-phoenix-new-cover-1000.jpg" alt="">
+                <div class="book__title">Harry Potter and the Order of the Phoenix</div>
+                <div class="book__overlay">
+                    <button class="button--color-red button--only-borders button--rounded">Удалить</button>
+                    <button class="button--color-olive button--only-borders button--rounded">Открыть</button>
+                </div>
+            </div>
+            <div class="book">
+                <img src="https://s-media-cache-ak0.pinimg.com/originals/df/9c/b8/df9cb84e021d8a9f20072badc46c9c3a.jpg" alt="">
+                <div class="book__title">Harry Potter and the Half-Blood Prince</div>
+                <div class="book__overlay">
+                    <button class="button--color-red button--only-borders button--rounded">Удалить</button>
+                    <button class="button--color-olive button--only-borders button--rounded">Открыть</button>
+                </div>
+            </div>
+            <div class="book">
+                <img src="https://pottermoreowl.files.wordpress.com/2013/07/hp7.jpg" alt="">
+                <div class="book__title">Harry Potter and the Deathly Hallows</div>
+                <div class="book__overlay">
+                    <button class="button--color-red button--only-borders button--rounded">Удалить</button>
+                    <button class="button--color-olive button--only-borders button--rounded">Открыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-3 tasks">
+        <h1>Задачи</h1>
+    </div>
+</div>
+
+<div class="book-window">
+    <div class="book-window__left-side">
+        <img src="https://i.pinimg.com/originals/5b/77/7b/5b777b414bb178f297f11a2b5e0177f6.jpg" alt="" class="book-window__cover">
+        <div class="book-window__buttons padding-1">
+            <button class="button--size-large button--icon button--fit button--color-olive button--rounded"><i class="lnr lnr-book"></i>Читать</button>
+            <button class="button--size-large button--icon button--fit button--color-red button--only-borders button--rounded"><i class="lnr lnr-heart"></i>В избранное</button>
+        </div>
+    </div>
+    <div class="book-window__right-side">
+        <h1 class="book-window__book-title">Harry Potter and the Goblet of Fire</h1>
+        <div class="book-info">
+            <div class="book-info__title">Жанры</div>
+            <div class="book-info__content">
+                <div class="tags">
+                    <div class="tags__item">Фэнтези</div>
+                    <div class="tags__item">Приключения</div>
+                </div>
+            </div>
+        </div>
+        <div class="book-info">
+            <div class="book-info__title">Краткое описание</div>
+            <div class="book-info__content">Harry Potter is in his fourth year at Hogwarts. Harry wants to get away from the pernicious Dursleys and go to the Quidditch World Cup with Hermione, Ron, and the Weasleys. He wants to find out about the mysterious event to take place at Hogwarts this year, an event involving two other rival schools of magic, and a competition that hasn't happened for hundreds of years. He wants to be a normal, fourteen-year-old wizard. But unfortunately for Harry Potter, he's not normal - not even by Wizarding standards. And in his case, different can be deadly.</div>
+        </div>
+
+        <div class="book-info m-gray-fg">
+            ISBN: 978-0-7475-4624-5
+        </div>
+    </div>
+</div>
+
+<script>
+    let bookWindow = new BookWindow();
+
+    function showBookWindow() {
+        bookWindow.show();
+    }
+</script>
+{% endblock %}

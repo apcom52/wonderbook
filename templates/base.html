@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="/media/css/styles.css">
     <script src="/media/js/altrone.js"></script>
     <script src="/media/js/BookWindow.js"></script>
+    {% block head %}{% endblock %}
 </head>
-<body>
+<body data-username="{{request.user.username}}">
 {% block content %}{%  endblock %}
 </body>
 </html>

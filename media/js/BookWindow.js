@@ -1,7 +1,7 @@
 'use strict';
 
 class BookWindow {
-    constructor(book_id = 1) {
+    constructor() {
         let target = this;
 
         target.window = document.getElementsByClassName('book-window')[0];

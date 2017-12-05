@@ -114,6 +114,8 @@ body {
     cursor: pointer;
     padding: 0.5rem;
     outline: none;
+    border-bottom: 2px solid transparent;
+    color: @black;
     .bold();
 
     &:first-child {
@@ -235,6 +237,40 @@ body {
 
 .tasks {
   background-color: @white;
+  padding: 1rem;
+  box-sizing: border-box;
+
+  .task {
+    display: block;
+    width: 100%;
+    border: 1px solid @u-gray;
+    padding: 1rem;
+    border-left: 5px solid @red;
+    border-radius: 0.5rem;
+    background-color: @u-gray;
+    margin: 1rem 0;
+    cursor: pointer;
+    transition: margin-left 0.3s linear;
+
+    &:hover {
+      margin-left: 5px;
+      transition: margin-left 0.3s linear;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    .task__title {
+      .bold();
+      font-size: 1.5em;
+      color: @d-gray;
+    }
+
+    .task__desc {
+      color: @black;
+    }
+  }
 }
 
 .book-window {
@@ -343,11 +379,12 @@ body {
       height: 327px;
       background-color: fade(@black, 80%);
       content: "";
-      visibility: hidden;
+      opacity: 0;
       display: flex;
       justify-content: flex-end;
       flex-direction: column;
       padding-bottom: 1rem;
+      transition: opacity 0.3s ease-out;
     }
 
     .book__title {
@@ -356,9 +393,10 @@ body {
       color: @black;
     }
 
-    &:hover {
+    &:hover, &:focus {
       .book__overlay {
-        visibility: visible;
+        opacity: 1;
+        transition: opacity 0.3s ease-out;
       }
     }
   }

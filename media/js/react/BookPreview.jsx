@@ -6,49 +6,50 @@ export default class BookPreview extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: 0,
-            title: "",
-            desc: "",
-            cover: "",
-            isbn: "",
+            visible: false,
+            book_id: 0,
+            book: {},
             modal: null,
         };
-
-        this.show.bind(this);
     }
 
-    componentDidMount() {
-        let book_id = this.props.book_id;
-
-
+    close() {
+        this.setState({
+            visible: false,
+            book_id: 0,
+            book: {}
+        });
     }
 
-    show(book_id = 0) {
-        if (this.state.modal == null) {
-            this.setState({
-                modal: new BookWindow()
-            })
-        }
-
-        this.state.modal.show();
-
+    open(book_id = 0) {
         $.get('/api/books/' + book_id.toString(), {},
             (r) => {
                 this.setState({
-                    id: r.id,
-                    title: r.title,
-                    desc: r.desc,
-                    cover: r.cover,
-                    isbn: r.isbn
+                    visible: true,
+                    book_id: book_id,
+                    book: r
                 });
+            }
+        );
+
+        console.log(book_id);
+
+        this.state.modal.show();
+    }
+
+    componentDidMount() {
+        this.setState({
+            modal: new BookWindow(() => { this.close(); })
         });
+
+        console.log(this.state.modal);
     }
 
     render() {
         let modal_content = <Loading/>
 
-        if (this.state.id != 0) {
-            modal_content = <div><h1 className="book-window__book-title">{this.state.title}</h1>
+        if (this.state.book_id != 0) {
+            modal_content = <div><h1 className="book-window__book-title">{this.state.book.title}</h1>
                 <div className="book-info">
                     <div className="book-info__title">Жанры</div>
                     <div className="book-info__content">
@@ -60,18 +61,18 @@ export default class BookPreview extends React.Component {
                 </div>
                 <div className="book-info">
                     <div className="book-info__title">Краткое описание</div>
-                    <div className="book-info__content">{this.state.desc}</div>
+                    <div className="book-info__content">{this.state.book.description}</div>
                 </div>
                 <div className="book-info">
                     <div className="book-info__title">ISBN</div>
-                    <div className="book-info__content">{this.state.isbn}</div>
+                    <div className="book-info__content">{this.state.book.isbn}</div>
                 </div></div>;
         }
 
         return (
             <div className="book-window" id="book-window">
                 <div className="book-window__left-side">
-                    <img src="" alt="" className="book-window__cover"/>
+                    <img src={this.state.book.cover} alt="" className="book-window__cover"/>
                     <div className="book-window__buttons padding-1">
                         <button className="button--size-large button--icon button--fit button--color-olive button--rounded"><Icon icon="book"/> Читать</button>
                     </div>

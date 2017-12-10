@@ -283,6 +283,7 @@ body {
   position: absolute;
   overflow: hidden;
   box-shadow: 1px 2px 6px 0px rgba(33, 33, 33, 0.5);
+  background-color: #649130;
 }
 .book-window .book-window__left-side .book-window__buttons {
   margin-top: 430px;
@@ -290,6 +291,8 @@ body {
 .book-window .book-window__right-side {
   flex: 1;
   margin: 1rem 1rem 1rem 0rem;
+  overflow: hidden;
+  overflow-y: auto;
 }
 .book-window .book-window__right-side .book-info {
   margin: 1rem;

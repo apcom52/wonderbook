@@ -1,8 +1,8 @@
 import React from 'react';
 
 export default class Book extends React.Component {
-    handleClick(book_id) {
-
+    handleClick() {
+        this.props.preview.open(this.props.id);
     }
 
     render() {
@@ -12,7 +12,7 @@ export default class Book extends React.Component {
                 <div className="book__title">{this.props.title}</div>
                 <div className="book__overlay">
                     <button className="button--color-red button--only-borders button--rounded">Удалить</button>
-                    <button className="button--color-olive button--only-borders button--rounded" onClick={this.handleClick.bind(this, this.props.key)}>Открыть</button>
+                    <button className="button--color-olive button--only-borders button--rounded" onClick={this.handleClick.bind(this)}>Открыть</button>
                 </div>
             </div>
         );

@@ -1,10 +1,11 @@
 'use strict';
 
 class BookWindow {
-    constructor() {
+    constructor(onHide) {
         let target = this;
 
-        target.window = document.getElementsByClassName('book-window')[0];
+        target.window = document.getElementById('book-window');
+        target.onHide = onHide;
     }
 
     show() {
@@ -18,5 +19,7 @@ class BookWindow {
     hide() {
         let target = this;
         target.window.classList.remove('book-window--show');
+        console.log(target.onHide);
+        target.onHide();
     }
 }

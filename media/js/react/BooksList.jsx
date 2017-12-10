@@ -1,13 +1,16 @@
 import React from 'react';
 import Book from "./Book";
 import Loading from "./Loading";
+import BookPreview from "./BookPreview";
 
 export default class BooksList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             books: [],
-            preview: false
+            bookPreview: null,
+            bookPreviewIsVisible: false,
+            selectedBookId: 0,
         };
     }
 
@@ -22,18 +25,39 @@ export default class BooksList extends React.Component {
         );
     }
 
+    /*componentWillUpdate(nextProps, nextState) {
+        if (nextState.bookPreviewIsVisible) {
+            this.state.bookPreview.show(nextState.selectedBookId);
+        }
+    }*/
+
+    showModal(book_id) {
+        this.setState({
+            bookPreviewIsVisible: true,
+            selectedBookId: book_id
+        });
+    }
+
+    /*closeModal() {
+        this.setState({
+            bookPreviewIsVisible: false
+        });
+    }*/
+
+
     render() {
         let books = <Loading/>
 
         if (this.state.books.length) {
             books = this.state.books.map((current) =>
-                <Book key={current.id} title={current.title} cover={current.cover} />
+                <Book key={current.id} id={current.id} title={current.title} cover={current.cover} preview={this.bookModal} />
             );
         }
 
         return (
             <div className="books-list">
                 {books}
+                <BookPreview ref={(modal) => { this.bookModal = modal; }}/>
             </div>
         );
     }

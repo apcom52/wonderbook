@@ -72,7 +72,7 @@ export default class BookPreview extends React.Component {
         return (
             <div className="book-window" id="book-window">
                 <div className="book-window__left-side">
-                    <img src={this.state.book.cover} alt="" className="book-window__cover"/>
+                    <img src={this.state.book.cover} alt="" className="book-window__cover" />
                     <div className="book-window__buttons padding-1">
                         <button className="button--size-large button--icon button--fit button--color-olive button--rounded"><Icon icon="book"/> Читать</button>
                     </div>

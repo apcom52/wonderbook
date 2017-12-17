@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="reader" id="reader">
+    <div class="reader__book">
+        {% for chapter in chapters %}
+        <div class="reader__text">
+            {{ chapter|safe }}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="reader-pages">
+        <div class="reader-pages__current">1</div>
+        <div class="reader-pages__separator">/</div>
+        <div class="reader-pages__full">104</div>
+    </div>
+    <div class="reader-navigation">
+        <div class="reader-navigation__item" onclick="prevPage()"><i class="lnr lnr-chevron-left"></i></div>
+        <div class="reader-navigation__item" onclick="nextPage()"><i class="lnr lnr-chevron-right"></i></div>
+        <div class="reader-navigation__item" onclick="bookmarks_sidebar.show()"><i class="lnr lnr-bookmark"></i></div>
+        <div class="reader-navigation__item" onclick="settings_sidebar.show()"><i class="lnr lnr-cog"></i></div>
+        <div class="reader-navigation__item" onclick="viewer.classList.toggle('reader--night-mode')"><i class="lnr lnr-moon"></i></div>
+    </div>
+</div>
+
+<div class="sidebar sidebar--pin-right" id="bookmarks_sidebar">
+    <h1 class="h3">Закладки</h1>
+    <ul class="list list--animation-invert">
+        <li class="list__item"><i class="lnr lnr-plus-circle margin-right-1"></i> Добавить закладку</li>
+        <li class="list__item">Глава 1. Мальчик, который выжил</li>
+        <li class="list__item">Глава 2. Исчезнувшее стекло</li>
+        <li class="list__item">Глава 3. Письма невесть от кого</li>
+        <li class="list__item">Глава 4. Хранитель ключей</li>
+    </ul>
+</div>
+
+<div class="sidebar sidebar--pin-right" id="settings_sidebar">
+    <h3>Здесь будут располагаться настройки чтения</h3>
+    <ul>
+        <li>Выбор кегля</li>
+        <li>Настройка отступов</li>
+        <li>Выбор гарнитуры</li>
+        <li>и другое</li>
+    </ul>
+</div>
+
+<script>
+    // Боковая панель для настроек и закладок
+    let settings_sidebar = new Sidebar(document.getElementById('settings_sidebar'));
+    let bookmarks_sidebar = new Sidebar(document.getElementById('bookmarks_sidebar'));
+
+    // Счетчики: активная страница и общее количество страниц
+    let currentPageCounter = document.getElementsByClassName('reader-pages__current')[0];
+    let allPagesCounter = document.getElementsByClassName('reader-pages__full')[0];
+
+    // Получаем окно просмотра и элементы, которые содержат в себе отдельные главы
+    let viewer = document.getElementById('reader');
+    let chapterElements = document.getElementsByClassName('reader__text');
+    let chapters = [];
+
+    let viewerHeight = chapterElements  [0].offsetHeight;
+    let bookLength = 0; // число страниц в книге
+
+    // Проходим по каждой главе и вычисляем число страниц для нее и прибавляем к общему числу
+    let startPage = 1;
+    for (let chapter_id= 0; chapter_id < chapterElements.length; chapter_id++) {
+        let current = chapterElements[chapter_id];
+        let chapterLength = Math.ceil(current.scrollHeight / viewerHeight);
+        bookLength += chapterLength;
+
+        console.log(chapter_id, startPage, chapterLength);
+
+        chapters.push({
+            start: startPage,
+            end: startPage + chapterLength,
+            element: current
+        });
+
+        startPage = startPage + chapterLength;
+
+        if (chapter_id > 0) {
+            current.style.display = 'none';
+        }
+    }
+
+    let currentPage = 1;
+    allPagesCounter.innerHTML = bookLength;
+    render();
+
+    function render() {
+        let currentChapter = null;
+        for (let chapter_id = 0; chapter_id < chapters.length; chapter_id++) {
+            let current = chapters[chapter_id];
+            if (currentPage >= current.start && currentPage < current.end) {
+                currentChapter = current;
+                current.element.style.display = 'block';
+            } else {
+                current.element.style.display = 'none';
+            }
+        }
+
+        currentChapter.element.scrollTop = (currentPage - currentChapter.start) * viewerHeight;
+        currentPageCounter.innerHTML = currentPage;
+    }
+
+    function nextPage() {
+        if (currentPage < bookLength) {
+            currentPage++;
+        }
+        render();
+    }
+
+    function prevPage() {
+        if (currentPage > 1) {
+            currentPage--;
+        }
+        render();
+    }
+</script>
+{% endblock %}

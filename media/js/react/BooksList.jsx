@@ -38,12 +38,6 @@ export default class BooksList extends React.Component {
         });
     }
 
-    /*closeModal() {
-        this.setState({
-            bookPreviewIsVisible: false
-        });
-    }*/
-
 
     render() {
         let books = <Loading/>

@@ -2,6 +2,7 @@
 /* Devices */
 /* Smoothing */
 /* Font */
+@import url('https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700,700i&subset=cyrillic');
 html {
   height: 100%;
 }
@@ -356,6 +357,119 @@ body {
 .books-list .book:focus .book__overlay {
   opacity: 1;
   transition: opacity 0.3s ease-out;
+}
+.reader {
+  background-color: #d1c4e9;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow-y: auto;
+}
+.reader .reader__book {
+  width: 840px;
+  height: 1000px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding: 39px 40px;
+  margin-left: calc(50% - 420px);
+  background-color: #ffffff;
+  border: 1px solid #f5f5f5;
+  color: #212121;
+  position: absolute;
+  box-shadow: 2px 2px 0px 1px #9E9E9E;
+  font-family: 'PT Serif', 'PT Sans', sans-serif;
+  line-height: 1;
+}
+.reader .reader__book .reader__text {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.reader .reader__book .reader__text h1,
+.reader .reader__book .reader__text h2,
+.reader .reader__book .reader__text h3,
+.reader .reader__book .reader__text h4,
+.reader .reader__book .reader__text h5,
+.reader .reader__book .reader__text h6 {
+  font-family: 'PT Serif', 'PT Sans Bold', sans-serif;
+  text-align: center;
+}
+.reader .reader__book .reader__text h4,
+.reader .reader__book .reader__text h5,
+.reader .reader__book .reader__text h6 {
+  margin: 20px;
+  margin-bottom: 0px;
+  font-size: 20px;
+}
+.reader .reader__book .reader__text h2,
+.reader .reader__book .reader__text h3 {
+  font-size: 40px;
+  margin: 20px;
+}
+.reader .reader__book .reader__text h1 {
+  font-size: 60px;
+  margin: 20px;
+}
+.reader .reader__book .reader__text p {
+  text-indent: 20px;
+  font-size: 20px;
+  margin: 20px 0px;
+  text-align: left;
+}
+.reader .reader__book .reader__text img {
+  font-size: 20px;
+  margin: 20px 0px;
+}
+.reader .reader-pages {
+  position: fixed;
+  top: 20px;
+  left: 100px;
+  display: flex;
+  align-items: center;
+  border-radius: 2em;
+  background-color: rgba(33, 33, 33, 0.9);
+  padding: 0 1em;
+}
+.reader .reader-pages .reader-pages__current {
+  color: #ffffff;
+  padding: 1em 0em 1em 1em;
+  font-family: 'PT Sans Bold', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI Black", "Roboto Black", "Helvetica Neue Black", "Arial Black", sans-serif;
+  font-weight: bold;
+}
+.reader .reader-pages .reader-pages__separator {
+  color: #9E9E9E;
+  padding: 1em 0.25em;
+}
+.reader .reader-pages .reader-pages__full {
+  color: #9E9E9E;
+  padding: 1em 1em 1em 0;
+}
+.reader .reader-navigation {
+  position: fixed;
+  top: 20px;
+  right: 100px;
+  display: flex;
+  align-items: center;
+  border-radius: 2em;
+  background-color: rgba(33, 33, 33, 0.9);
+  padding: 0 1em;
+}
+.reader .reader-navigation .reader-navigation__item {
+  color: #ffffff;
+  cursor: pointer;
+  flex: 1;
+  padding: 1em;
+}
+.reader.reader--night-mode {
+  background-color: #263238;
+}
+.reader.reader--night-mode .reader__book {
+  background-color: #FFECB3;
+  box-shadow: 2px 2px 0 1px #424242;
+  color: #424242;
+}
+.reader.reader--night-mode .reader-navigation .reader-navigation__item:nth-child(5) {
+  color: #8bc34a;
 }
 @keyframes book-window {
   0% {

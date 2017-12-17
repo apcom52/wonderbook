@@ -1,7 +1,12 @@
+from pprint import pprint
+
 from django.shortcuts import render, redirect
 from django.contrib import auth
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
+from django.conf import settings
+from xml.etree import ElementTree as etree
+
 
 # Create your views here.
 def profile_auth(request):
@@ -48,7 +53,7 @@ def profile_auth(request):
 			if not errors:
 				user = User.objects.create_user(login, email, password)
 				user.save()
-				auth_user = authenticate(username = login, password = password)
+				auth_user = authenticate(username=login, password=password)
 				auth.login(request, auth_user)
 				return redirect('/')
 
@@ -57,8 +62,27 @@ def profile_auth(request):
 		}
 	return render(request, 'login.html', context)
 
+
 def index(request):
 	if not request.user.is_authenticated():
 		return redirect('/auth')
 	context = {}
 	return render(request, 'index.html', context)
+
+
+def book(request):
+	import epub
+	filename = settings._PATH + '/media/HP_1_-_Harry_Potter_and_the_Philosophers_Stone.epub'
+
+	context = {
+		'chapters': []
+	}
+
+	book_file = epub.open_epub(filename)
+	for item_id, linear in book_file.opf.spine.itemrefs:
+		item = book_file.get_item(item_id)
+		data = book_file.read_item(item)
+
+		context['chapters'].append(data)
+
+	return render(request, 'book.html', context)

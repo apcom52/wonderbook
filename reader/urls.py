@@ -3,6 +3,6 @@ from . import views
 
 urlpatterns = [
 	url('^auth$', views.profile_auth),
-	url('^book$', views.book),
+	url('^book/(?P<id>[0-9]+)/', views.book),
 	url('^$', views.index),
 ]

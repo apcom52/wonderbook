@@ -69,12 +69,14 @@ export default class BookPreview extends React.Component {
                 </div></div>;
         }
 
+        let book_url = "/book/" + this.state.book_id + "/";
+
         return (
             <div className="book-window" id="book-window">
                 <div className="book-window__left-side">
                     <img src={this.state.book.cover} alt="" className="book-window__cover" />
                     <div className="book-window__buttons padding-1">
-                        <button className="button--size-large button--icon button--fit button--color-olive button--rounded"><Icon icon="book"/> Читать</button>
+                        <a href={book_url} className="button button--size-large button--icon button--fit button--color-olive button--rounded align-center"><Icon icon="book"/> Читать</a>
                     </div>
                 </div>
                 <div className="book-window__right-side">

@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.conf import settings
 from xml.etree import ElementTree as etree
+from .models import Book
 
 
 # Create your views here.
@@ -70,9 +71,11 @@ def index(request):
 	return render(request, 'index.html', context)
 
 
-def book(request):
+def book(request, id=1):
 	import epub
-	filename = settings._PATH + '/media/HP_1_-_Harry_Potter_and_the_Philosophers_Stone.epub'
+	book = Book.objects.get(pk=id)
+	filename = settings._PATH + '\\media\\' + book.chapters.name
+	print(filename)
 
 	context = {
 		'chapters': []

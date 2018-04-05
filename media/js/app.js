@@ -449,6 +449,8 @@ var BookPreview = function (_React$Component) {
                 );
             }
 
+            var book_url = "/book/" + this.state.book_id + "/";
+
             return _react2.default.createElement(
                 "div",
                 { className: "book-window", id: "book-window" },
@@ -460,8 +462,8 @@ var BookPreview = function (_React$Component) {
                         "div",
                         { className: "book-window__buttons padding-1" },
                         _react2.default.createElement(
-                            "button",
-                            { className: "button--size-large button--icon button--fit button--color-olive button--rounded" },
+                            "a",
+                            { href: book_url, className: "button button--size-large button--icon button--fit button--color-olive button--rounded align-center" },
                             _react2.default.createElement(_Icon2.default, { icon: "book" }),
                             " \u0427\u0438\u0442\u0430\u0442\u044C"
                         )
@@ -557,13 +559,6 @@ var BooksList = function (_React$Component) {
                 selectedBookId: book_id
             });
         }
-
-        /*closeModal() {
-            this.setState({
-                bookPreviewIsVisible: false
-            });
-        }*/
-
     }, {
         key: "render",
         value: function render() {
